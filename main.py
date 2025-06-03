@@ -1,5 +1,4 @@
-
-# !/usr/bin/env python3
+#!/usr/bin/env python3
 """
 Advanced Network Monitor using Python and Scapy
 
@@ -8,8 +7,8 @@ Entry point of the project.
 
 import argparse
 import logging
-import threading
-import time
+import os
+import sys
 from monitor import start_sniffing
 from stats import StatsManager
 
@@ -42,6 +41,8 @@ def parse_arguments():
 
 def main():
     args = parse_arguments()
+    if hasattr(os, "geteuid") and os.geteuid() != 0:
+        sys.exit("This program must be run as root.")
     setup_logging(args.log)
     logging.info("Starting Advanced Network Monitor")
 

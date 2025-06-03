@@ -10,9 +10,19 @@ This project is a simple network monitor that captures IP packets and displays r
 ## Requirements
 - Python 3.6+
 - Scapy (see `requirements.txt`)
+- libpcap development headers (e.g. `sudo apt-get install libpcap-dev` on Debian/Ubuntu)
 
 ## Installation & Usage
 
 1. **Install Dependencies:**
    ```bash
    pip install -r requirements.txt
+   ```
+
+2. **Run the Monitor (requires root privileges):**
+   ```bash
+   sudo python main.py --interface <your_interface>
+   ```
+
+Captured packet statistics will be logged every few seconds. Press `Ctrl+C` to stop the monitor.
+

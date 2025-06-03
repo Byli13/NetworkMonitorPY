@@ -11,12 +11,14 @@ from collections import Counter
 packet_counter = Counter()
 counter_lock = threading.Lock()
 
+
 def update_packet_count(protocol):
     """
     Thread-safe update of the packet counter.
     """
     with counter_lock:
         packet_counter[protocol] += 1
+
 
 class StatsManager:
     def __init__(self, interval=5):

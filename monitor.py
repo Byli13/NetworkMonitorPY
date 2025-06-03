@@ -2,9 +2,16 @@
 Module for network packet monitoring using Scapy.
 """
 
-from scapy.all import sniff, IP, TCP, UDP, ICMP
+try:
+    from scapy.all import sniff, IP, TCP, UDP, ICMP
+except ImportError as exc:
+    raise ImportError(
+        "Scapy is required for packet sniffing. "
+        "Install it with 'pip install scapy'."
+    ) from exc
 from stats import update_packet_count
 import logging
+
 
 def process_packet(packet):
     """
@@ -21,6 +28,7 @@ def process_packet(packet):
             update_packet_count('Other_IP')
     else:
         update_packet_count('Non_IP')
+
 
 def start_sniffing(filter_str="ip", iface=None):
     """
