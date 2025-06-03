@@ -6,6 +6,7 @@ Provides helper functions such as CSV logging of statistics.
 import csv
 import time
 
+
 def log_stats_to_csv(filename, stats_dict):
     """
     Append the current statistics to a CSV file with a timestamp.
